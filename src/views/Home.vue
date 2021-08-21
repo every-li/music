@@ -1,18 +1,30 @@
 <template>
-  <div>{{ msg }}</div>
-  <Test :propMsg="propMsg" />
+  <Carousel :banners="banners" />
 </template>
 
 <script lang="ts">
-import Test from '@/components/Test.vue'
-import { defineComponent, ref } from 'vue'
+import { getBanners } from '@/api/home';
+import Carousel from '@/components/Carousel.vue';
+import { defineComponent, onMounted, reactive } from 'vue';
+export interface BannerProps {
+  pic: string;
+  targetId: number;
+  titleColor: string;
+  typeTitle: string;
+  bannerId: string;
+  [propsName: string]: unknown;
+}
 
 export default defineComponent({
-  components: { Test },
+  components: { Carousel },
   setup() {
-    const msg = ref('这是首页')
-    const propMsg = '这是prop 信息'
-    return { msg, propMsg }
+    let banners = reactive<BannerProps[]>([]);
+    onMounted(() => {
+      getBanners().then( res => {
+        banners =  res.banners;
+      });
+    });
+    return { banners };
   },
-})
+});
 </script>

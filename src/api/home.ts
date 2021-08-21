@@ -1,4 +1,3 @@
-import { Banner } from '@/utils/musicType';
 import http from '@/utils/request';
 
 // 获取轮播图

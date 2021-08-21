@@ -1,17 +1,9 @@
 <template>
-  <van-swipe
-    v-for="banner in banners"
-    :key="banner.bannerId"
-    class="my-swipe"
-    :autoplay="3000"
-    indicator-color="white"
-  >
-    <van-swipe-item>
-      <van-image :src="banner.pic"></van-image>
+  <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
+    <van-swipe-item v-for="banner in banners" :key="banner.bannerId">
+      <van-image :src="banner.pic" radius="10"></van-image>
     </van-swipe-item>
   </van-swipe>
-
-  <div>这是组件</div>
 </template>
 
 <script lang="ts">
@@ -29,12 +21,5 @@ export default defineComponent({
 });
 </script>
 
-<style scope>
-.my-swipe .van-swipe-item {
-  color: #fff;
-  font-size: 20px;
-  line-height: 150px;
-  text-align: center;
-  background-color: #39a9ed;
-}
+<style lang="scss" scope>
 </style>

@@ -2,14 +2,14 @@ import axios from 'axios';
 import { Toast } from 'vant';
 
 // 封装axios
-const instance = axios.create({
+const Axiosinstance = axios.create({
   baseURL: 'http://localhost:3000',
   timeout: 3000,
   headers: { 'content-type': 'application/json; charset=utf-8' },
 });
 
 // 添加请求拦截器
-instance.interceptors.request.use(
+Axiosinstance.interceptors.request.use(
   function(config) {
     // 在发送请求之前做些什么
     return config;
@@ -21,7 +21,7 @@ instance.interceptors.request.use(
 );
 
 // 添加响应拦截器
-instance.interceptors.response.use(response => {
+Axiosinstance.interceptors.response.use(response => {
   const res = response.data;
   if (typeof res !== 'object') {
     Toast.fail('服务器错误');
@@ -43,8 +43,8 @@ class Http {
    * @param params  http params
    * @returns Promise<any>
    */
-  get(url: string, params?: any): Promise<any> {
-    return instance({
+  get(url: string, params?: unknown): Promise<any> {
+    return Axiosinstance({
       method: 'get',
       url,
       params,
@@ -59,7 +59,7 @@ class Http {
    * @returns
    */
   post(url: string, data?: any, params?: any): Promise<any> {
-    return instance({
+    return Axiosinstance({
       method: 'post',
       url,
       params,

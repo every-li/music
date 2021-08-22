@@ -5,6 +5,18 @@
       <div class="title">云音乐</div>
       <div><img src="@/assets/search.svg" alt="" /></div>
     </div>
+    <van-tabs
+      v-model:active="active"
+      animated
+      background="#d44439"
+      color="#ffffff"
+      title-inactive-color="#e4e4e4"
+      title-active-color="#f1f1f1"
+    >
+      <van-tab title="推荐">推荐</van-tab>
+      <van-tab title="歌手">歌手</van-tab>
+      <van-tab title="排行榜">排行榜</van-tab>
+    </van-tabs>
     <div class="caroulsel">
       <Carousel :banners="banners" />
     </div>
@@ -14,7 +26,7 @@
 <script lang="ts">
 import { getBanners } from '@/api/home';
 import Carousel from '@/components/Carousel.vue';
-import { defineComponent, onMounted, reactive, toRefs } from 'vue';
+import { defineComponent, onMounted, reactive, ref, toRefs } from 'vue';
 export interface BannerProps {
   pic: string;
   targetId: number;
@@ -32,6 +44,7 @@ interface State {
 export default defineComponent({
   components: { Carousel },
   setup() {
+    const active = ref(2);
     const state = reactive<State>({
       banners: [],
       // isGetBanners: false,
@@ -43,7 +56,7 @@ export default defineComponent({
       });
     });
 
-    return { ...toRefs(state) };
+    return { ...toRefs(state), active };
   },
 });
 </script>

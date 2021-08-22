@@ -3,7 +3,7 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import '@vant/touch-emulator';
-import { Swipe, SwipeItem, Image as VanImage, Col, Row } from 'vant';
+import { Swipe, SwipeItem, Image as VanImage, Tab, Tabs } from 'vant';
 
 createApp(App)
   .use(store)
@@ -11,6 +11,6 @@ createApp(App)
   .use(Swipe)
   .use(SwipeItem)
   .use(VanImage)
-  .use(Col)
-  .use(Row)
+  .use(Tab)
+  .use(Tabs)
   .mount('#app');

@@ -17,46 +17,17 @@
       <van-tab title="歌手">歌手</van-tab>
       <van-tab title="排行榜">排行榜</van-tab>
     </van-tabs>
-    <div class="caroulsel">
-      <Carousel :banners="banners" />
-    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { getBanners } from '@/api/home';
-import Carousel from '@/components/Carousel.vue';
-import { defineComponent, onMounted, reactive, ref, toRefs } from 'vue';
-export interface BannerProps {
-  pic: string;
-  targetId: number;
-  titleColor: string;
-  typeTitle: string;
-  bannerId: string;
-  [propsName: string]: unknown;
-}
-
-interface State {
-  banners: BannerProps[];
-  // isGetBanners: boolean;
-}
+import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
-  components: { Carousel },
   setup() {
     const active = ref(2);
-    const state = reactive<State>({
-      banners: [],
-      // isGetBanners: false,
-    });
-    onMounted(async () => {
-      await getBanners().then(res => {
-        state.banners = res.banners;
-        // state.isGetBanners = true;
-      });
-    });
 
-    return { ...toRefs(state), active };
+    return { active };
   },
 });
 </script>

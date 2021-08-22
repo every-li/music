@@ -1,7 +1,7 @@
 <template>
   <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
     <van-swipe-item v-for="banner in banners" :key="banner.bannerId">
-      <van-image :src="banner.pic" radius="10"></van-image>
+      <van-image :src="banner.pic" radius="10" class="img"></van-image>
     </van-swipe-item>
   </van-swipe>
 </template>
@@ -20,6 +20,12 @@ export default defineComponent({
   },
 });
 </script>
-
-<style lang="scss" scope>
+<style lang="scss">
+.van-swipe {
+  width: 356px;
+  margin: 0 auto;
+}
+.img {
+  width: 356px;
+}
 </style>

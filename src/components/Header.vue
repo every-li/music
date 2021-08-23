@@ -13,9 +13,9 @@
       title-inactive-color="#e4e4e4"
       title-active-color="#f1f1f1"
     >
-      <van-tab title="推荐">推荐</van-tab>
-      <van-tab title="歌手">歌手</van-tab>
-      <van-tab title="排行榜">排行榜</van-tab>
+      <van-tab title="推荐"></van-tab>
+      <van-tab title="歌手"></van-tab>
+      <van-tab title="排行榜"></van-tab>
     </van-tabs>
   </div>
 </template>
@@ -24,6 +24,7 @@
 import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
+  name: 'Header',
   setup() {
     const active = ref(2);
 

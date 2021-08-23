@@ -1,3 +1,4 @@
+import store from '@/store';
 import axios from 'axios';
 import { Toast } from 'vant';
 
@@ -12,6 +13,8 @@ const service = axios.create({
 service.interceptors.request.use(
   function(config) {
     // 在发送请求之前做些什么
+    store.dispatch('setLoading', true);
+
     return config;
   },
   function(error) {
@@ -33,6 +36,8 @@ service.interceptors.response.use(response => {
     }
     return Promise.reject(res);
   }
+  store.dispatch('setLoading', false);
+
   return res;
 });
 

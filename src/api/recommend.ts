@@ -10,6 +10,4 @@ export const getRecommendList = async () => {
   return await http.get('/personalized');
 };
 
-export const getPlayList = async() => {
-  return await http.get('/playlist/detail?id=24381616');
-};
+

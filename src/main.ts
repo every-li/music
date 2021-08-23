@@ -11,7 +11,10 @@ import {
   Tabs,
   Loading,
   List,
-  Cell,
+  Grid,
+  GridItem,
+  Lazyload,
+  Divider,
 } from 'vant';
 
 createApp(App)
@@ -24,5 +27,8 @@ createApp(App)
   .use(Tabs)
   .use(Loading)
   .use(List)
-  .use(Cell)
+  .use(Grid)
+  .use(GridItem)
+  .use(Lazyload)
+  .use(Divider)
   .mount('#app');

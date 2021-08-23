@@ -1,25 +1,24 @@
 <template>
   <div>
     <div class="title">推荐歌单</div>
-    <van-list
-      v-model:loading="loading"
-      :finished="finished"
-      finished-text="没有更多了"
-      @load="onLoad"
-    >
-      <van-image
-        v-for="(item, index) in recommendSongList"
-        :key="index"
-        width="100"
-        height="100"
-        :src="item.picUrl"
-      />
-    </van-list>
+    <van-grid :column-num="3" icon-size="100px">
+      <van-grid-item v-for="item in recommendSongList" :key="item.id">
+        <router-link :to="{ name: 'playList', params: { id: item.id } }">
+          <van-image :src="item.picUrl" lazy-load radius="10" />
+          <span class="text">{{ item.name }}</span>
+        </router-link>
+      </van-grid-item>
+    </van-grid>
   </div>
+  <van-divider
+    :style="{ color: '#d44439', borderColor: '#d44439', padding: '0 16px' }"
+  >
+    我是有底线的
+  </van-divider>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, ref, toRefs } from 'vue';
+import { defineComponent, PropType } from 'vue';
 import { RecommendSongList } from '@/views/Recommend.vue';
 
 export default defineComponent({
@@ -30,33 +29,16 @@ export default defineComponent({
       type: Array as PropType<RecommendSongList[]>,
     },
   },
-  setup(props) {
-    // eslint-disable-next-line vue/no-setup-props-destructure
-    const recommendSongList = props.recommendSongList;
-    const loading = ref(false);
-    const finished = ref(false);
-
-    const onLoad = () => {
-      // 异步更新数据
-      // setTimeout 仅做示例，真实场景中一般为 ajax 请求
-      setTimeout(() => {
-        // 加载状态结束
-        loading.value = false;
-
-        // 数据全部加载完成
-        if (recommendSongList.length >= 30) {
-          finished.value = true;
-        }
-      }, 1000);
-    };
-
-    return {
-      // eslint-disable-next-line vue/no-dupe-keys
-      recommendSongList,
-      onLoad,
-      loading,
-      finished,
-    };
-  },
 });
 </script>
+
+<style lang="scss" scope>
+.text {
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+</style>

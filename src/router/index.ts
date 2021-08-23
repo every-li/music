@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import Recommend from '../views/Recommend.vue';
+import PlayList from '../views/PlayList.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -8,8 +9,13 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/recommend',
-    name: 'Recommend',
+    name: 'recommend',
     component: Recommend,
+  },
+  {
+    path: '/playList/:id',
+    name: 'playList',
+    component: PlayList,
   },
   // {
   //   path: '/about',

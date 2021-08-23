@@ -1,11 +1,11 @@
 <template>
-  <div>歌曲列表</div>
+  <van-card :thumb="playlist.coverImgUrl" />
 </template>
 
 <script lang="ts">
 import { defineComponent, onMounted, reactive, toRefs } from 'vue';
 import { useRoute } from 'vue-router';
-import { getPlayList } from '../api/playlist';
+import { getPlayList } from '../../api/playlist';
 
 export interface List {
   id: number;
@@ -24,7 +24,7 @@ export interface List {
 
 interface State {
   id: number;
-  playlist: List[];
+  playlist: any;
 }
 
 export default defineComponent({
@@ -33,7 +33,7 @@ export default defineComponent({
     const route = useRoute();
     const state = reactive<State>({
       id: parseInt(route.params.id as string),
-      playlist: [],
+      playlist: {},
     });
     onMounted(() => {
       getPlayList(state.id).then(res => {

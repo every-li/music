@@ -19,7 +19,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-import { RecommendSongList } from '@/views/Recommend.vue';
+import { RecommendSongList } from '@/views/Recommend/index.vue';
 
 export default defineComponent({
   name: 'RecommendList',

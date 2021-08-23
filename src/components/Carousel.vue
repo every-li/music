@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-import { BannerProps } from '@/views/Recommend.vue';
+import { BannerProps } from '@/views/Recommend/index.vue';
 
 export default defineComponent({
   name: 'Carousel',

@@ -15,6 +15,7 @@ import {
   GridItem,
   Lazyload,
   Divider,
+  Card,
 } from 'vant';
 
 createApp(App)
@@ -31,4 +32,5 @@ createApp(App)
   .use(GridItem)
   .use(Lazyload)
   .use(Divider)
+  .use(Card)
   .mount('#app');

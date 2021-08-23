@@ -9,7 +9,7 @@
 import { defineComponent, onMounted, reactive, toRefs } from 'vue';
 import { getBanners, getRecommendList } from '@/api/recommend';
 import Carousel from '@/components/Carousel.vue';
-import RecommendList from '@/components/RecommendList.vue';
+import RecommendList from '@/views/Recommend/RecommendList.vue';
 
 export interface BannerProps {
   pic: string;

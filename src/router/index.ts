@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
-import Recommend from '../views/Recommend.vue';
-import PlayList from '../views/PlayList.vue';
+import Recommend from '../views/Recommend/index.vue';
+import PlayList from '../views/PlayList/index.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
